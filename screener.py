@@ -36,7 +36,7 @@ API_RETRY_DELAY = 2.0
 RSI_PERIOD = 14
 EMA_SHORT = 50
 EMA_LONG = 200
-RSI_OVERSOLD = 32
+RSI_OVERSOLD = 35
 RSI_OVERBOUGHT = 70
 
 # --- RSI Recovery & Pullback Configuration ---
@@ -55,12 +55,12 @@ TREND_SLOPE_BARS = 5
 TREND_MIN_CONSECUTIVE = 3     
 
 # --- RSI Bounce Configuration ---
-RSI_BOUNCE_CONFIRM_BARS = 2   
-RSI_BOUNCE_MIN_RISE = 3.0     
+RSI_BOUNCE_CONFIRM_BARS = 1   
+RSI_BOUNCE_MIN_RISE = 1.5     
 
 # --- Order Block (SMC) Configuration ---
 OB_LOOKBACK = 20              
-OB_IMBALANCE_RATIO = 1.5      
+OB_IMBALANCE_RATIO = 1.1      
 
 # --- Take Profit Tiers ---
 TP_TIERS = {
