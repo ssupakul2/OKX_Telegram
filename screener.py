@@ -118,7 +118,7 @@ def get_historical_data(coin: str) -> pd.DataFrame | None:
     
     params = {
         "instId": inst_id,
-        "bar": "4h",      # OKX บังคับใช้ตัวพิมพ์เล็กสำหรับหน่วยเวลาชั่วโมง
+        "bar": "4H",      # OKX บังคับใช้ตัวพิมพ์เล็กสำหรับหน่วยเวลาชั่วโมง
         "limit": "100"    # ลิมิตสูงสุดต่อ 1 Request ของ OKX (100 แท่ง เพียงพอต่อการหา EMA200 ด้วยวิธี EWM)
     }
     
