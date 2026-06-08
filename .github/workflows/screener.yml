@@ -1,0 +1,38 @@
+name: OKX Crypto Screener
+
+# รับ Trigger จากภายนอก (Webhook จาก cron-job.org) และปุ่มกดด้วยมือ (Manual)
+on:
+  repository_dispatch:
+    types: [cron_trigger] # ชื่อ Event Type ที่ตั้งค่าไว้ใน cron-job.org
+  workflow_dispatch: 
+
+permissions:
+  contents: write
+
+jobs:
+  run-screener:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository code
+      uses: actions/checkout@v4.2.2
+      with:
+        persist-credentials: true
+
+    - name: Set up Python
+      uses: actions/setup-python@v5.3.0
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Execute Screener Script
+      env:
+        # ส่งค่า Telegram Token และ Chat ID เพื่อใช้ส่งแจ้งเตือนเข้ากลุ่ม/แชทของคุณ
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      run: python screener.py
